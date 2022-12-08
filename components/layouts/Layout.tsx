@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import Head from 'next/head';
+import { NavBar } from '../ui';
 
 interface Props {
     title?: string;
@@ -17,6 +18,9 @@ export const Layout: FC<Props> = ({ children, title }) => {
             <meta name='description' content={`Información sobre pokemones${title}`}/>
             <meta name='keywords' content={`XXXX, pokemon, pokeapi, pokedex, ${title}`}/>
         </Head>
+
+        {/* navbar */}
+        <NavBar />
 
         <main>
             { children }
