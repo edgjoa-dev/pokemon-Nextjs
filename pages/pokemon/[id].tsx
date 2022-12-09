@@ -11,8 +11,12 @@ interface Props {
 
 const PokemonPage: NextPage<Props> = ({ pokemon }) => {
 
+    const onTogglefavorite = ()=> {
+        localStorage.setItem('favorites', JSON.stringify(pokemon.id));
+    }
+
     return (
-    <Layout title='Algun pokemon'>
+    <Layout title={ pokemon.name }>
         <Grid.Container css={{ marginTop: '5px' }} gap={2}>
             <Grid xs={12} sm={4}>
                 <Card>
