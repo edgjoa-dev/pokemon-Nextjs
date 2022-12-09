@@ -3,9 +3,7 @@ import { Layout } from '../../components/layouts';
 
 const FavoritesPage = () => {
     return (
-        <Layout
-            title='Pokemones Favoritos'
-        >
+        <Layout title='Pokemones Favoritos' >
             <div>Favorites</div>
         </Layout>
     )

@@ -36,8 +36,11 @@ return (
         </NextLink>
 
         <Spacer css={{ flex: 1 }}/>
-
-        <Text color='white'>Favoritos</Text>
+        <NextLink href={'/favorites'} passHref legacyBehavior>
+            <Link>
+                <Text color='white'>Favoritos</Text>
+            </Link>
+        </NextLink>
     </div>
 )
 }
