@@ -1,19 +1,22 @@
 import { Layout } from "../../components/layouts"
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { pokeApi } from "../../api";
-import { PokemonListResponse, SmallPokemon } from "../../interfaces";
+import { Pokemon, PokemonListResponse, SmallPokemon } from "../../interfaces";
 
 interface Props {
-    id: string,
-    name: string,
+    pokemon: Pokemon;
 }
 
 
-const PokemonPage: NextPage<Props> = ({ id, name }) => {
+const PokemonPage: NextPage<Props> = ({ pokemon }) => {
+
+    console.log(pokemon);
+
+
     return (
     <Layout title='Algun pokemon'>
         <div>
-            <h1>{ id } - { name }</h1>
+            <h1> Pokemon </h1>
         </div>
     </Layout>
     )
@@ -39,21 +42,16 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 
 
 
-export const getStaticProps: GetStaticProps = async (ctx) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
 
-//    const { data } = await pokeApi.get<PokemonListResponse>('/pokemon?limit=151')
-  //  console.log(data.results);
+    const { id } = params as { id: string }
 
-    // const pokemons: SmallPokemon[] = data.results.map(( poke, i )=>({
-    //     ...poke,
-    //     id: i + 1,
-    //     image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${i + 1}.svg`
-    // }))
+    const { data } = await pokeApi.get<Pokemon>(`/pokemon/${ id }`)
+
 
     return {
         props: {
-        id: 1,
-        name: 'ditto',
+            pokemon: data
         }
     }
     }
