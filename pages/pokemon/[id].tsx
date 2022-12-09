@@ -1,9 +1,20 @@
 import { Layout } from "../../components/layouts"
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import { pokeApi } from "../../api";
+import { PokemonListResponse, SmallPokemon } from "../../interfaces";
 
-const PokemonPage = () => {
+interface Props {
+    id: string,
+    name: string,
+}
+
+
+const PokemonPage: NextPage<Props> = ({ id, name }) => {
     return (
     <Layout title='Algun pokemon'>
-        <div>PokemonPage</div>
+        <div>
+            <h1>{ id } - { name }</h1>
+        </div>
     </Layout>
     )
 
@@ -11,6 +22,44 @@ const PokemonPage = () => {
 
 }
 
+
+    // You should use getStaticPaths if you’re statically pre-rendering pages that use dynamic routes
+
+export const getStaticPaths: GetStaticPaths = async (ctx) => {
+    const { data } = await  // your fetch function here 
+
+    return {
+        paths: [
+            {
+                params: {
+                    
+                }
+            }
+        ],
+        fallback: false
+    }
+}
+
+
+
+export const getStaticProps: GetStaticProps = async (ctx) => {
+
+//    const { data } = await pokeApi.get<PokemonListResponse>('/pokemon?limit=151')
+  //  console.log(data.results);
+
+    // const pokemons: SmallPokemon[] = data.results.map(( poke, i )=>({
+    //     ...poke,
+    //     id: i + 1,
+    //     image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${i + 1}.svg`
+    // }))
+
+    return {
+        props: {
+        id: 1,
+        name: 'ditto',
+        }
+    }
+    }
 
 
 export default PokemonPage
