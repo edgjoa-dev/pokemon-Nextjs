@@ -30,7 +30,7 @@ return (
                     P
                 </Text>
                 <Text color="white" h3>
-                    okemon
+                    ókemon
                 </Text>
             </Link>
         </NextLink>
