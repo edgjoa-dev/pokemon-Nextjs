@@ -14,6 +14,7 @@ interface Props {
 const HomePage: NextPage<Props> = ({pokemons}) => {
 
 
+
   return (
     <Layout title={'Pokemon App Web'}>
       <Grid.Container gap={2} justify='flex-start'>

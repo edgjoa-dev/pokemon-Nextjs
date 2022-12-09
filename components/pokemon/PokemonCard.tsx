@@ -23,10 +23,10 @@ return (
         >
         <Card.Body>
             <Card.Image
-            src={pokemon.image}
-            alt={pokemon.name}
-            width="100%"
-            height={140}
+                src={pokemon.image}
+                alt={pokemon.name}
+                width="100%"
+                height={140}
             />
         </Card.Body>
         <Card.Footer>

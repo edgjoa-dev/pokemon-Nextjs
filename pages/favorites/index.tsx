@@ -1,16 +1,14 @@
 import React from 'react'
-import { Layout } from '../../components/layouts'
+import { Layout } from '../../components/layouts';
 
 const FavoritesPage = () => {
     return (
         <Layout
-            title='Pókemons Favoritos'
+            title='Pokemones Favoritos'
         >
-            <h2>
-                FavoritesPage
-            </h2>
+            <div>Favorites</div>
         </Layout>
     )
 }
 
-export default FavoritesPage
+export default FavoritesPage;
