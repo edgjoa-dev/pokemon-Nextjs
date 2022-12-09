@@ -1,6 +1,6 @@
 
 
-const toggleFavorites = ( id: number )=> {
+const toggleFavorite = ( id: number )=> {
     console.log('toggle Favorites')
 
     let favorites: number[] = JSON.parse( localStorage.getItem('favorites') || '[]' );
@@ -15,6 +15,7 @@ const toggleFavorites = ( id: number )=> {
 
 }
 
-export {
-    toggleFavorites
+// eslint-disable-next-line import/no-anonymous-default-export
+export default {
+    toggleFavorite,
 }

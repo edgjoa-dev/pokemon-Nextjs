@@ -3,6 +3,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { pokeApi } from "../../api";
 import { Pokemon } from "../../interfaces";
 import { Grid, Card, Text, Button, Container, Image } from '@nextui-org/react';
+import { localFavorites } from "../../utils";
 
 interface Props {
     pokemon: Pokemon;
@@ -12,7 +13,7 @@ interface Props {
 const PokemonPage: NextPage<Props> = ({ pokemon }) => {
 
     const onTogglefavorite = ()=> {
-        localStorage.setItem('favorites', JSON.stringify(pokemon.id));
+        localFavorites.toggleFavorite(pokemon.id);
     }
 
     return (
@@ -39,6 +40,7 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
                         <Button
                             color="gradient"
                             ghost
+                            onClick={onTogglefavorite}
                         >
                             Guardar en Favorito
                         </Button>
