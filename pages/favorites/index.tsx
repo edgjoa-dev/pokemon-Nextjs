@@ -1,10 +1,11 @@
 import React from 'react'
 import { Layout } from '../../components/layouts';
+import { NoFavorites } from '../../components/ui';
 
 const FavoritesPage = () => {
     return (
         <Layout title='Pokemones Favoritos' >
-            <div>Favorites</div>
+            <NoFavorites />
         </Layout>
     )
 }
