@@ -17,6 +17,7 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
 
     const onTogglefavorite = ()=> {
         localFavorites.toggleFavorite(pokemon.id);
+        setIsInFavorites(!isInFavorites);
     }
 
     return (
@@ -42,10 +43,10 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
 
                         <Button
                             color="gradient"
-                            ghost
-                            onClick={onTogglefavorite}
+                            ghost={ !isInFavorites }
+                            onPress={onTogglefavorite}
                         >
-                            Guardar en Favorito
+                            { isInFavorites ? 'En Favoritos' : 'Guardar en favoritos' }
                         </Button>
                     </Card.Header>
 
