@@ -4,6 +4,7 @@ import { pokeApi } from "../../api";
 import { Pokemon } from "../../interfaces";
 import { Grid, Card, Text, Button, Container, Image } from '@nextui-org/react';
 import { localFavorites } from "../../utils";
+import { useState } from "react";
 
 interface Props {
     pokemon: Pokemon;
@@ -11,6 +12,8 @@ interface Props {
 
 
 const PokemonPage: NextPage<Props> = ({ pokemon }) => {
+
+    const [isInFavorites, setIsInFavorites] = useState( localFavorites.existInFavorites( pokemon.id ) )
 
     const onTogglefavorite = ()=> {
         localFavorites.toggleFavorite(pokemon.id);
