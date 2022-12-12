@@ -1,11 +1,12 @@
-import { Layout } from '@/components/layouts'
-import { Grid, Card, Button, Container, Text, Image } from '@nextui-org/react'
-import { pokeApi } from 'api'
-import confetti from 'canvas-confetti'
-import { Pokemon } from 'interfaces'
-import { GetStaticPaths, GetStaticProps } from 'next'
-import React, { FC, useState } from 'react'
-import { localFavorites } from 'utils'
+import { Grid, Card, Button, Container, Text, Image } from "@nextui-org/react";
+import confetti from "canvas-confetti";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { FC, useState } from "react";
+import { pokeApi } from "../../api";
+import { Layout } from "../../components/layouts";
+import { Pokemon, PokemonListResponse } from "../../interfaces";
+import { localFavorites } from "../../utils";
+
 
 interface Props {
     pokemon: Pokemon
@@ -104,10 +105,11 @@ const PokemonByNamePage: FC<Props> = ({pokemon}) => {
 }
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
 
-    const pokemon151 = [...Array(151)].map(( value, index )=> `${value.name}`)
+    const { data } = await pokeApi.get<PokemonListResponse>('/pokemon?limit=151')
+    const pokemonNames: string[] = data.results.map( poke => poke.name )
 
     return {
-        paths: pokemon151.map( name => ({
+        paths: pokemonNames.map( name => ({
             params: { name }
         })),
         fallback: false
