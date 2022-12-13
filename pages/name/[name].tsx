@@ -1,5 +1,6 @@
 import { Grid, Card, Button, Container, Text, Image } from "@nextui-org/react";
 import confetti from "canvas-confetti";
+import { wrap } from "module";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { FC, useState } from "react";
 import { pokeApi } from "../../api";
@@ -53,8 +54,8 @@ const PokemonByNamePage: FC<Props> = ({pokemon}) => {
             </Grid>
 
             <Grid xs={12} sm={8}>
-                <Card>
-                    <Card.Header css={{ display: 'flex', justifyContent: 'space-between' }}>
+                <Card css={{ display: 'flex', justifyContent: 'space-between'}}>
+                    <Card.Header css={{ display: 'flex', justifyContent: 'space-between', flexWrap:'wrap' }}>
                         <Text h1 transform="capitalize">{pokemon.name}</Text>
 
                         <Button

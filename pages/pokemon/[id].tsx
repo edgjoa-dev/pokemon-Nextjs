@@ -1,6 +1,5 @@
 import { Layout } from "../../components/layouts"
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import { pokeApi } from "../../api";
 import { Pokemon } from "../../interfaces";
 import { Grid, Card, Text, Button, Container, Image } from '@nextui-org/react';
 import { getPokemonInfo, localFavorites } from "../../utils";
@@ -51,7 +50,7 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
                 </Card>
             </Grid>
 
-            <Grid xs={12} sm={8}>
+            <Grid xs={12} sm={8} css={{ display:'flex' }}>
                 <Card>
                     <Card.Header css={{ display: 'flex', justifyContent: 'space-between' }}>
                         <Text h1 transform="capitalize">{pokemon.name}</Text>
